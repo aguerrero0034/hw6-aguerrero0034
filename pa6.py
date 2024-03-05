@@ -91,7 +91,7 @@ def get_data_from_all_programs():
 if __name__ == "__main__":
     courses = get_data_from_all_programs()
     df = pd.DataFrame(courses)
-    df.to_csv('college_catalog.csv', index=False)
+    df.to_csv('coursecatalog.csv', index=False)
     print("Done!")
 
 print(df)
