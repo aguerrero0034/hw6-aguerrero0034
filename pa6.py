@@ -40,13 +40,13 @@ def extract_course_info(course):
     if detail:
         detail_text = detail.get_text().replace('\xa0', ' ')
 
-        # Relevant patterns in details
+        # Match w/ regex patterns defined earlier
         instructors_match = instructors_pattern.search(detail_text)
         terms_offered_match = terms_offered_pattern.search(detail_text)
         prerequisites_match = prerequisites_pattern.search(detail_text)
         equivalent_courses_match = equivalent_courses_pattern.search(detail_text)
 
-        # Scraped info or None
+        # Scraped info or None in place
         instructors = instructors_match.group(1).strip() if instructors_match else None
         terms_offered = terms_offered_match.group(1).strip() if terms_offered_match else None
         prerequisites = prerequisites_match.group(1).strip() if prerequisites_match else None
@@ -83,8 +83,6 @@ def get_data_from_all_programs():
                 if course_info:
                     all_course_data.append(course_info)
             time.sleep(3)
-        else:
-            print(f"Failed to fetch {url}. Status code: {response.status_code}")
 
     return all_course_data
 
